@@ -1,0 +1,32 @@
+import React from 'react';
+import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+function Settings(props) {
+    return (
+      <div>
+        <div><Link to="/homepage"><button type="button">BACK</button></Link></div>
+        <div> <h3> SETTINGS </h3> </div>
+        <div><Link to="/dogsettings"><button type="button">Dog Settings</button></Link></div>
+        <div><Link to="/"><button type="button">Help</button></Link></div>
+        <div><Link to="/"><button type="button">Notification</button></Link></div>
+      </div>
+      );
+  }
+
+  function DogSettings(props){
+    return (
+      <div>
+        <div><Link to="/homepage"><button type="button">BACK</button></Link></div>
+        <div> <h3> DOG SETTINGS </h3> </div>
+          <div>
+            <Link to="/"><button type="button">+ ADD DOG</button></Link>
+            <Link to="/"><button type="button">- REMOVE DOG</button></Link>
+          </div>
+
+        {/* CHANGE NAME should be a drop down list to choose which dog*/}
+        <div><Link to="/"><button type="button">CHANGE NAME</button></Link></div>
+      </div>
+      );
+  }
+export DogSettings, Settings;
