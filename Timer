@@ -1,0 +1,91 @@
+// {The timer: Ej klar i paus}
+
+import React, { useState }  from 'react';
+import ReactDOM from 'react-dom';
+
+// {Special library, also downloaded by npm (like world countries)}
+import Countdown, { CountdownApi } from 'react-countdown-now';
+
+function App() {
+
+// {---------------Variables--------------}
+
+  // {Like a boolean that keeps track of when the timer is started}
+  // let StartedOrNot = false;  
+  // let PausedOrNot = false;
+  const CompletedTraining = () => <span>Completed training!</span>;
+  // {Supposed to change the seconds needed}
+  const [TimerSeconds, setTimerSeconds] = useState(1800000);
+  const [PausedOrNot, setPausedOrNot] = useState(false);
+  const [StartedOrNot, setStartedOrNot] = useState(false);
+
+
+// {---------------Functions--------------}
+
+// {Function that changes timer and text on button: state: usestate timerseconds (countdown)}
+  function startTimer() {
+    // StartedOrNot = true;
+    setStartedOrNot(true);
+    setTimerSeconds(TimerSeconds);
+
+    console.log("hej");
+    console.log(TimerSeconds);
+
+    var buttontext = document.getElementById("Text");
+  
+    if (buttontext.innerHTML === 'Start') {
+      buttontext.innerHTML = 'Paus';
+     }
+   else if (buttontext.innerHTML === 'Paus') {
+      buttontext.innerHTML = 'Continue';
+      setPausedOrNot(true);
+      
+    }
+    else {
+      buttontext.innerHTML = 'Paus';
+      setPausedOrNot(false);
+    }
+  }
+
+// {The renderer: Changes the "timer": Countdown}
+  const renderer = ({minutes, seconds, completed, controlled}) => {
+    if (StartedOrNot === false) {
+      return <span>00:00</span>;
+    }
+    else if (PausedOrNot === true) { 
+      handlePausClick();
+      return;
+    } 
+    else if (completed) {
+      return <CompletedTraining />;
+    } 
+    else {
+      return <span>{minutes}:{seconds}</span>;
+    }
+  }
+
+// {Paus-funktioner: Titta på Github-exemplena}
+  function handlePausClick() {
+    CountdownApi.pause();
+  }
+
+  function handleUpdate() {
+    forceUpdate();
+  }
+
+// {HTML-koden som hör ihop med "Countdown-now" och funktioner}
+  return (
+    <div>
+    <button id="Startbutton" onClick={startTimer}><p id="Text">Start</p>
+    </button>
+    <br></br>
+    <Countdown date={Date.now() + TimerSeconds}
+    renderer={renderer} 
+    onPause={handleUpdate}
+    /><br></br>
+    </div>
+
+  );
+}
+
+export default App;
