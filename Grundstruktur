@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import StartTraining from './starttraining';
+import AllTraining from './alltraining';
+import Settings from './settings';
+import DogSettings from './settings';
 
-
-function App() { 
-  return (
-    <div className="Container">
+function App() {
+    return (
+    <div className="ContainerBody">
     
       <Router>
 
@@ -52,92 +54,9 @@ function App() {
         </Switch>
      </Router>
     </div>
-  );  
+  ); 
 }
 
-function StartTraining(props) {
-    return (
-      <div>
-
-        <div>
-          <Link to="/settings"><button type="button">GEAR</button></Link>
-          <Link to="/homepage"><button type="button">BACK</button></Link>
-        </div>
-
-        <div><h3>EXERCISE FOR "NAME"</h3></div>
-
-        <div><h3>CATEGORY</h3></div>
-        {/* CATEGORY should be a drop down list*/}
-
-        {/* SLUTADE MED ATT FÖRSÖKA FÅ DROP-DOWN LISTAN ATT FUNGERA */}
-        
-
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Dropdown Button
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-
-
-        <div> 
-        <select>
-          <option value="CATEGORY">CATEGORY</option>
-          <option value="AGILITY">AGILITY</option>
-          <option value="OBEDIENCE">OBEDIENCE</option>
-          <option value="TRICKS">TRICKS</option>
-        </select>
-        </div>
-
-      </div>
-    );
-  }
-
-function AllTraining(props) {
-    return (
-      <div>
-
-        <div>
-          <Link to="/settings"><button type="button">GEAR</button></Link>
-          <Link to="/homepage"><button type="button">BACK</button></Link>
-        </div>
-
-        <div> <h3> ALL TRAINING </h3> </div>
-        <div> <h3> AGILITY </h3> </div>
-
-        {/* Staple laying down with the percent */}
-        <ul>
-            <li>
-              <Link to="/agility"> <div> <h3> AGILITY </h3> </div></Link>
-            </li>
-
-            <li>
-              <Link to="/agility"> <div> <h3> OBEDIENCE </h3> </div></Link>
-            </li>
-
-            <li>
-              <Link to="/agility"> <div> <h3> TRICKS </h3> </div></Link>
-            </li>
-
-            <li>
-              <Link to="/agility"> <div> <h3> HUNT </h3> </div></Link>
-            </li>
-
-            <li>
-              <Link to="/agility"> <div> <h3> SOCIAL TRAINING </h3> </div></Link>
-            </li>
-
-        </ul>
-
-      </div>
-          
-      );
-  }
 
 {/* The link depends on what categories are relevent */}
 function TopTraining1(props) {
@@ -152,36 +71,6 @@ function TopTraining2(props) {
 {/* The link depends on what categories are relevent */}
 function TopTraining3(props) {
     return (<Link to="/homepage"> <div> <p> BACK </p> </div></Link>);
-  }
-
-function Settings(props) {
-    return (
-      <div>
-        <div><Link to="/homepage"><button type="button">BACK</button></Link></div>
-        <div> <h3> SETTINGS </h3> </div>
-        <div><Link to="/dogsettings"><button type="button">Dog Settings</button></Link></div>
-        <div><Link to="/"><button type="button">Help</button></Link></div>
-        <div><Link to="/"><button type="button">Notification</button></Link></div>
-      </div>
-      );
-  }
-
-  function DogSettings(props){
-    return (
-      <div>
-        <div><Link to="/homepage"><button type="button">BACK</button></Link></div>
-        <div> <h3> DOG SETTINGS </h3> </div>
-          <div>
-            <Link to="/"><button type="button">+ ADD DOG</button></Link>
-            <Link to="/"><button type="button">- REMOVE DOG</button></Link>
-          </div>
-
-        {/* CHANGE NAME should be a drop down list to choose which dog*/}
-        <div><Link to="/"><button type="button">CHANGE NAME</button></Link></div>
-      </div>
-
-
-      );
   }
 
 
