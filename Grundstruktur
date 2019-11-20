@@ -1,1 +1,189 @@
+import React, { useState } from 'react';
+import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
+
+function App() { 
+  return (
+    <div className="Container">
+    
+      <Router>
+
+        <Switch>
+          {/* Homepage */}
+          <Route path = "/homepage">
+            <div><Link to="/settings"><button type="button">Settings</button></Link></div>
+            <div><Link to="/toptraining1"><button type="button">Top Training 1</button></Link>
+            <Link to="/toptraining2"><button type="button">Top Training 2</button></Link>
+            <Link to="/toptraining3"><button type="button">Top Training 3</button></Link></div>
+            <div><Link to="/alltraining"><button type="button">All Training</button></Link></div>
+            <div><Link to="/starttraining"><button type="button">Start Training</button></Link></div>
+
+          </Route>
+
+          {/* Start training */}
+          <Route path = "/starttraining" component = {StartTraining}>
+          </Route>
+
+          {/* All training */}
+          <Route path = "/alltraining" component = {AllTraining}>
+          </Route>
+
+          {/* Top training 1 */}
+          <Route path = "/toptraining1" component = {TopTraining1}>
+          </Route>
+
+          {/* Top training 2 */}
+          <Route path = "/toptraining2" component = {TopTraining2}>
+          </Route>
+
+          {/* Top training 3 */}
+          <Route path = "/toptraining3" component = {TopTraining3}>
+          </Route>
+
+          {/* Settings */}
+          <Route path = "/settings" component = {Settings}>
+          </Route>
+
+          <Route path = "/dogsettings" component = {DogSettings}>
+          </Route>
+      
+        </Switch>
+     </Router>
+    </div>
+  );  
+}
+
+function StartTraining(props) {
+    return (
+      <div>
+
+        <div>
+          <Link to="/settings"><button type="button">GEAR</button></Link>
+          <Link to="/homepage"><button type="button">BACK</button></Link>
+        </div>
+
+        <div><h3>EXERCISE FOR "NAME"</h3></div>
+
+        <div><h3>CATEGORY</h3></div>
+        {/* CATEGORY should be a drop down list*/}
+
+        {/* SLUTADE MED ATT FÖRSÖKA FÅ DROP-DOWN LISTAN ATT FUNGERA */}
+        
+
+        <Dropdown>
+          <Dropdown.Toggle variant="success" id="dropdown-basic">
+            Dropdown Button
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+
+
+        <div> 
+        <select>
+          <option value="CATEGORY">CATEGORY</option>
+          <option value="AGILITY">AGILITY</option>
+          <option value="OBEDIENCE">OBEDIENCE</option>
+          <option value="TRICKS">TRICKS</option>
+        </select>
+        </div>
+
+      </div>
+    );
+  }
+
+function AllTraining(props) {
+    return (
+      <div>
+
+        <div>
+          <Link to="/settings"><button type="button">GEAR</button></Link>
+          <Link to="/homepage"><button type="button">BACK</button></Link>
+        </div>
+
+        <div> <h3> ALL TRAINING </h3> </div>
+        <div> <h3> AGILITY </h3> </div>
+
+        {/* Staple laying down with the percent */}
+        <ul>
+            <li>
+              <Link to="/agility"> <div> <h3> AGILITY </h3> </div></Link>
+            </li>
+
+            <li>
+              <Link to="/agility"> <div> <h3> OBEDIENCE </h3> </div></Link>
+            </li>
+
+            <li>
+              <Link to="/agility"> <div> <h3> TRICKS </h3> </div></Link>
+            </li>
+
+            <li>
+              <Link to="/agility"> <div> <h3> HUNT </h3> </div></Link>
+            </li>
+
+            <li>
+              <Link to="/agility"> <div> <h3> SOCIAL TRAINING </h3> </div></Link>
+            </li>
+
+        </ul>
+
+      </div>
+          
+      );
+  }
+
+{/* The link depends on what categories are relevent */}
+function TopTraining1(props) {
+    return (<Link to="/homepage"> <div> <p> BACK </p> </div></Link>);
+  }
+
+{/* The link depends on what categories are relevent */}
+function TopTraining2(props) {
+    return (<Link to="/homepage"> <div> <p> BACK </p> </div></Link>);
+  }
+
+{/* The link depends on what categories are relevent */}
+function TopTraining3(props) {
+    return (<Link to="/homepage"> <div> <p> BACK </p> </div></Link>);
+  }
+
+function Settings(props) {
+    return (
+      <div>
+        <div><Link to="/homepage"><button type="button">BACK</button></Link></div>
+        <div> <h3> SETTINGS </h3> </div>
+        <div><Link to="/dogsettings"><button type="button">Dog Settings</button></Link></div>
+        <div><Link to="/"><button type="button">Help</button></Link></div>
+        <div><Link to="/"><button type="button">Notification</button></Link></div>
+      </div>
+      );
+  }
+
+  function DogSettings(props){
+    return (
+      <div>
+        <div><Link to="/homepage"><button type="button">BACK</button></Link></div>
+        <div> <h3> DOG SETTINGS </h3> </div>
+          <div>
+            <Link to="/"><button type="button">+ ADD DOG</button></Link>
+            <Link to="/"><button type="button">- REMOVE DOG</button></Link>
+          </div>
+
+        {/* CHANGE NAME should be a drop down list to choose which dog*/}
+        <div><Link to="/"><button type="button">CHANGE NAME</button></Link></div>
+      </div>
+
+
+      );
+  }
+
+
+
+export default App;
