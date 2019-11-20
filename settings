@@ -29,4 +29,4 @@ function Settings(props) {
       </div>
       );
   }
-export DogSettings, Settings;
+export {DogSettings, Settings};
