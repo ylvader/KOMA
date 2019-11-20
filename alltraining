@@ -1,0 +1,45 @@
+import React from 'react';
+import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+function AllTraining(props) {
+    return (
+      <div>
+
+        <div>
+          <Link to="/settings"><button type="button">GEAR</button></Link>
+          <Link to="/homepage"><button type="button">BACK</button></Link>
+        </div>
+
+        <div> <h3> ALL TRAINING </h3> </div>
+
+        {/* Staple laying down with the percent */}
+        <div id="containerAlltrain">
+          <ul>
+              <li>
+                <Link to="/agility"> <div> <h3> AGILITY </h3> </div></Link>
+              </li>
+
+              <li>
+                <Link to="/agility"> <div> <h3> OBEDIENCE </h3> </div></Link>
+              </li>
+
+              <li>
+                <Link to="/agility"> <div> <h3> TRICKS </h3> </div></Link>
+              </li>
+
+              <li>
+                <Link to="/agility"> <div> <h3> HUNT </h3> </div></Link>
+              </li>
+
+              <li>
+                <Link to="/agility"> <div> <h3> SOCIAL TRAINING </h3> </div></Link>
+              </li>
+          </ul>
+        </div>
+
+      </div>
+          
+      );
+  }
+  export default AllTraining;
